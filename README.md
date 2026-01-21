@@ -2,6 +2,27 @@
 It is Django &amp; Django rest framework based project. With CRUD APIs.
 
 install django & django rest framework.
+-> pip install django djangorestframework
+-> django-admin startproject vehicle_system .
+-> django-admin startapp vehicles
+
+Add apps to INSTALLED_APPS in vehicle_system/settings.py:INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'vehicles',
+]
+
+after creating model.py
+python manage.py makemigrations
+python manage.py migrate
+
+Register the Vehicle model in vehicles/admin.py:
+
+Create vehicles/serializers.py:
+Create vehicles/views.py:
+Create vehicles/urls.py:
+Include app URLs in vehicle_system/urls.py:
+
 for APIs testing - Postman
 
 APIs endpoint:
