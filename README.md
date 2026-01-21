@@ -74,9 +74,36 @@ enter data in payload(JSON format):
 
 8. for login the user(POST)
    /api/login/
-
+   
    enter the data in payload
    {
     "username": "", 
     "password": ""
   }
+
+9. for assigned vehicle to user(POST)
+    /api/vehicles/
+
+   input data
+   {
+  "vehicle_number": "",
+  "owner_name": "",
+  "vehicle_type": "",
+  "registration_date": "",
+  "is_active": 
+ }
+
+    output data
+   {
+    "status": ,
+    "message": " ",
+    "data": {
+        "id": ,
+        "assigned_user": "",
+        "vehicle_number": "",
+        "owner_name": "",
+        "vehicle_type": "",
+        "registration_date": "",
+        "is_active": 
+    }
+}
