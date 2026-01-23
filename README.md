@@ -16,6 +16,9 @@ after creating model.py
 python manage.py makemigrations
 python manage.py migrate
 
+for runserver
+python manage.py runserver
+
 Register the Vehicle model in vehicles/admin.py:
 
 Create vehicles/serializers.py:
