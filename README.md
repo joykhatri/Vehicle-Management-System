@@ -1,6 +1,16 @@
 # Vehicle-Management-System
 It is Django &amp; Django rest framework based project. With CRUD APIs.
 
+
+Create virtual environment.
+-> python -m venv .venv
+
+Activate virtual environment.
+-> .venv\Scripts\activate
+
+for server run.
+-> python manage.py runserver
+
 install django & django rest framework.
 -> pip install django djangorestframework
 -> django-admin startproject vehicle_system .
