@@ -1,7 +1,15 @@
-# Vehicle-Management-System
-It is Django &amp; Django rest framework based project. With CRUD APIs.
+# 🚗 Vehicle Management System
+A **Django & Django REST Framework** based Vehicle Management System that provides full CRUD APIs along with user authentication and vehicle assignment features.
 
+## 📌 Features
+- User Registration & Login
+- Create, Read, Update, Delete Vehicles
+Search Vehicles
+Filter by Vehicle Type
+Assign Vehicle to User
+RESTful APIs
 
+Postman API Testing Support
 Create virtual environment.
 -> python -m venv .venv
 
