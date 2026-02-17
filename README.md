@@ -4,7 +4,7 @@ A **Django & Django REST Framework** based Vehicle Management System that provid
 ## 📌 Features
 - User Registration & Login
 - Create, Read, Update, Delete Vehicles
-Search Vehicles
+* Search Vehicles
 Filter by Vehicle Type
 Assign Vehicle to User
 RESTful APIs
