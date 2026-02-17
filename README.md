@@ -4,52 +4,134 @@ A **Django & Django REST Framework** based Vehicle Management System that provid
 ## 📌 Features
 - User Registration & Login
 - Create, Read, Update, Delete Vehicles
-* Search Vehicles
-Filter by Vehicle Type
-Assign Vehicle to User
-RESTful APIs
+- Search Vehicles
+- Filter by Vehicle Type
+- Assign Vehicle to User
+- RESTful APIs
 
-Postman API Testing Support
-Create virtual environment.
--> python -m venv .venv
+## 🛠️ Tech Stack
+- Python
+- Django
+- Django REST Framework
+- SQLite (Default DB)
 
-Activate virtual environment.
--> .venv\Scripts\activate
+## ⚙️ Installation & Setup
+### 1️⃣ Create Virtual Environment
+```bash
+python -m venv .venv
+```
 
-for server run.
--> python manage.py runserver
+### 2️⃣ Activate Virtual Environment
+```bash
+Windows:
+.venv\Scripts\activate
 
-install django & django rest framework.
--> pip install django djangorestframework
--> django-admin startproject vehicle_system .
--> django-admin startapp vehicles
+Mac/Linux:
+source .venv/bin/activate
+```
 
-Add apps to INSTALLED_APPS in vehicle_system/settings.py:INSTALLED_APPS = [
+### 3️⃣ Install Dependencies
+```bash
+pip install django djangorestframework
+```
+
+### 4️⃣ Create Project & App
+```bash
+django-admin startproject vehicle_system .
+django-admin startapp vehicles
+```
+
+### 5️⃣ Add Apps to INSTALLED_APPS
+```bash
+In vehicle_system/settings.py:
+
+INSTALLED_APPS = [
     ...
     'rest_framework',
     'vehicles',
 ]
+```
 
-after creating model.py
+### 🗄️ Database Setup
+```bash
+After creating models in models.py:
+
 python manage.py makemigrations
 python manage.py migrate
+```
 
-for runserver
+### ▶️ Run Development Server
+```bash
 python manage.py runserver
+```
 
-Register the Vehicle model in vehicles/admin.py:
+### Server will start at:
+```bash
+http://127.0.0.1:8000/
+```
 
-Create vehicles/serializers.py:
-Create vehicles/views.py:
-Create vehicles/urls.py:
-Include app URLs in vehicle_system/urls.py:
+### 📁 Project Structure
+```bash
+vehicle_system/
+│
+├── vehicle_system/
+│   ├── settings.py
+│   ├── urls.py
+│
+├── vehicles/
+│   ├── models.py
+│   ├── admin.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+│
+└── manage.py
+```
 
-for APIs testing - Postman
+### 🔌 API Endpoints
+```bash
+Base URL:
+http://127.0.0.1:8000/api/
+```
 
-APIs endpoint:
-1. /api/vehicles/(POST)
-   for register vehicle
-enter data in payload(JSON format):
+### 1️⃣ Register Vehicle (POST)
+#### Endpoint:
+```bash
+/api/vehicles/
+```
+
+#### Payload:
+```bash
+{
+  "vehicle_number": "AB123CD",
+  "owner_name": "John Doe",
+  "vehicle_type": "Car",
+  "registration_date": "2024-01-01",
+  "is_active": true
+}
+```
+
+### 2️⃣ Get All Vehicles (GET)
+```bash
+/api/vehicles/
+```
+
+### 3️⃣ Filter by Vehicle Type (GET)
+```bash
+/api/vehicles/?vehicle_type=Car
+```
+
+### 4️⃣ Search Vehicles (GET)
+```bash
+/api/vehicles/?search=John
+```
+
+### 5️⃣ Update Vehicle (PUT)
+```bash
+/api/vehicles/{id}/
+```
+#### Payload:
+```bash
 {
   "vehicle_number": "",
   "owner_name": "",
@@ -57,74 +139,89 @@ enter data in payload(JSON format):
   "registration_date": "",
   "is_active": 
 }
+```
 
-2. /api/vehicles/(GET)
-   to get vehicles data
+### 6️⃣ Delete Vehicle (DELETE)
+```bash
+/api/vehicles/{id}/
+```
 
-3. to check vehicle type(GET)
-   /api/vehicles/?vehicle_type=
-
-4. Search Vehicles(GET)
-   /api/vehicles/?search=
-
-5. update data(PUT)
-   /api/vehicles/{id}/
-
-   enter data in payload for update
-   {
-  "vehicle_number": "",
-  "owner_name": "",
-  "vehicle_type": "",
-  "registration_date": "",
-  "is_active": 
-
-  }
-
-6. delete data(DELETE)
-   /api/vehicles/{id}/
-
-7. for register the user(POST)
-   /api/register/
-
-   enter the data in payload
-   {
-    "username": "",
-    "email": "",
-    "password": ""
-  }
-
-8. for login the user(POST)
-   /api/login/
-   
-   enter the data in payload
-   {
-    "username": "", 
-    "password": ""
-  }
-
-9. for assigned vehicle to user(POST)
-    /api/vehicles/
-
-   input data
-   {
-  "vehicle_number": "",
-  "owner_name": "",
-  "vehicle_type": "",
-  "registration_date": "",
-  "is_active": 
- }
-
-    output data
-   {
-    "status": ,
-    "message": " ",
-    "data": {
-        "id": ,
-        "assigned_user": "",
-        "vehicle_number": "",
-        "owner_name": "",
-        "vehicle_type": "",
-        "registration_date": "",
-        "is_active": 
-    }
+### 7️⃣ Register User (POST)
+```bash
+/api/register/
+```
+#### Payload:
+```bash
+{
+  "username": "john",
+  "email": "john@example.com",
+  "password": "password123"
 }
+```
+
+### 8️⃣ Login User (POST)
+```bash
+/api/login/
+```
+#### Payload:
+```bash
+{
+  "username": "john",
+  "password": "password123"
+}
+```
+
+### 9️⃣ Assign Vehicle to User (POST)
+```bash
+/api/vehicles/
+```
+#### Payload:
+```bash
+{
+  "vehicle_number": "AB123CD",
+  "owner_name": "John Doe",
+  "vehicle_type": "Car",
+  "registration_date": "2024-01-01",
+  "is_active": true
+}
+```
+#### Response:
+```bash
+{
+  "status": true,
+  "message": "Vehicle assigned successfully",
+  "data": {
+    "id": 1,
+    "assigned_user": "john",
+    "vehicle_number": "AB123CD",
+    "owner_name": "John Doe",
+    "vehicle_type": "Car",
+    "registration_date": "2024-01-01",
+    "is_active": true
+  }
+}
+```
+
+### 🧪 API Testing
+#### You can test APIs using:
+- Postman
+- Thunder Client (VS Code Extension)
+- cURL
+
+### 👨‍💻 Admin Panel
+#### To access Django Admin:
+
+#### Create superuser:
+```bash
+python manage.py createsuperuser
+```
+
+#### Open:
+```bash
+http://127.0.0.1:8000/admin/
+```
+
+### 📌 Notes
+- Make sure migrations are applied before running the server.
+- Use virtual environment to avoid dependency conflicts.
+- Configure authentication permissions if required.
